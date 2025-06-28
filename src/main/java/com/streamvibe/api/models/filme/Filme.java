@@ -19,7 +19,10 @@ public class Filme {
     private String estudio;
     private double duracao;
     private String imagem;
+
+    @Enumerated(EnumType.STRING)
     private Genero genero;
+
     private String diretor;
     private String elenco;
     private String sinopse;
