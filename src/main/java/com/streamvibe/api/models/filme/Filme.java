@@ -47,4 +47,16 @@ public class Filme {
          this.ativo = false;
     }
 
+    public void atualizarInformacoes(DadosAtualizacaoFilme dados){
+        if(dados.nome()!=null){
+            this.nome = dados.nome();
+        }
+        if(dados.estudio()!=null){
+            this.estudio = dados.estudio();
+        }
+        if (dados.diretor()!=null){
+            this.diretor = dados.diretor();
+        }
+    }
+
 }

@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import com.streamvibe.api.models.filme.DadosAtualizacaoFilme;
 import com.streamvibe.api.models.filme.DadosCadastroFilme;
 import com.streamvibe.api.models.filme.Filme;
 import com.streamvibe.api.models.filme.FilmeRepository;
@@ -29,9 +30,6 @@ public class FilmesController {
 
     // Aqui fica o READ
     
-     
-    
-    
     @GetMapping
     public List<Filme>listarFilmes(){
         return repository.findAll();
@@ -43,22 +41,26 @@ public class FilmesController {
     // Aqui fica o UPDATE
     @PutMapping
     @Transactional
-    public void atualizarFilme(@ResponseBody Filme filme) {
-        var filme = repository.findById(filme.id());
-    }
+     public void atualizarFilme(@RequestBody DadosAtualizacaoFilme dados){
+        var filme = repository.getReferenceById(dados.id());
+        filme.atualizarInformacoes(dados);
+     }
      
-    //Aqui fica o DELETE REAL
-    // @DeleteMapping("/{id}")
-    // @Transactional
-    // public void excluirFilmeReal(@PathVariable Integer id) {
-    //     repository.deleteById(id);
-    // }
-    
-    // Aqui fica a EXCLUSÃO LÓGICA
+
+
+
+    // Aqui fica o DELETE REAL
     @DeleteMapping("/{id}")
     @Transactional
-    public void excluirFilmeLogica(@PathVariable Integer id) {
-        var filme = repository.getReferenceById(id);
-        filme.excluirFilmeLogica();
+    public void excluirFilmeReal(@PathVariable Integer id) {
+        repository.deleteById(id);
     }
+    
+    // Aqui fica a EXCLUSÃO LÓGICA
+    // @DeleteMapping("/{id}")
+    // @Transactional
+    // public void excluirFilmeLogica(@PathVariable Integer id) {
+    //     var filme = repository.getReferenceById(id);
+    //     filme.excluirFilmeLogica();
+    // }
 }
