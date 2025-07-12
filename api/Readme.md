@@ -1,5 +1,3 @@
-
-
 # 📦 API de Produtos - Sistema de Gestão de Produtos
 
 Este projeto é um sistema simples para a gestão de produtos, desenvolvido com **Java** utilizando **Spring Boot**. Ele permite o cadastro e a listagem de produtos, armazenando suas informações como nome e preço. O sistema utiliza **H2** como banco de dados em memória para persistência de dados e oferece uma interface web básica construída com **Thymeleaf**. **Lombok** é empregado para minimizar o código boilerplate.
